@@ -1,4 +1,4 @@
-package ru_reader
+package rureader
 
 import (
 	"bufio"

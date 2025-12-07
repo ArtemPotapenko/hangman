@@ -1,4 +1,4 @@
-package file_reader
+package filereader
 
 import (
 	"bufio"

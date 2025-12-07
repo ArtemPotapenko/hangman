@@ -1,4 +1,4 @@
-package hungman_drawer
+package drawer
 
 import (
 	"errors"

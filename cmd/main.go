@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"hangman/internal/dict"
 	"hangman/internal/game"
-	"hangman/internal/io/file_reader"
-	"hangman/internal/io/hungman_drawer"
-	"hangman/internal/io/ru_reader"
+	"hangman/internal/io/drawer"
+	"hangman/internal/io/filereader"
+	"hangman/internal/io/rureader"
 	"io"
 	"math/rand"
 	"os"
@@ -18,12 +18,12 @@ func main() {
 		os.Exit(1)
 	}
 	filename := os.Args[1]
-	reader, err := file_reader.New(filename)
+	reader, err := filereader.New(filename)
 	if err != nil {
 		fmt.Println("Ошибка открытия файла " + filename)
 		os.Exit(1)
 	}
-	defer func(reader *file_reader.FileReader) {
+	defer func(reader *filereader.FileReader) {
 		err := reader.Close()
 		if err != nil {
 			panic(err)
@@ -44,7 +44,7 @@ func main() {
 	process := game.NewProcess(stringArr[rand.Intn(len(stringArr))])
 
 	fmt.Println(process.GetGuessWord())
-	ruReader := ru_reader.New(int(os.Stdin.Fd()))
+	ruReader := rureader.New(int(os.Stdin.Fd()))
 
 	for !process.IsGuessed() && !process.IsLost() {
 		letter, _, err := ruReader.ReadRune()
@@ -71,7 +71,7 @@ func main() {
 		}
 
 		fmt.Println()
-		err = hungman_drawer.DrawHangman(process.GetMistakeCount())
+		err = drawer.DrawHangman(process.GetMistakeCount())
 		if err != nil {
 			panic(err)
 		}
