@@ -6,6 +6,7 @@ import (
 	"hangman/internal/russian"
 	"os"
 	"strings"
+	"unicode"
 )
 
 type RuReader struct {
@@ -37,6 +38,6 @@ func (r *RuReader) ReadRune() (rune, int, error) {
 			fmt.Print("Введите русскую букву: ")
 			continue
 		}
-		return runes[0], 1, nil
+		return unicode.ToLower(runes[0]), 1, nil
 	}
 }
