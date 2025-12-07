@@ -34,7 +34,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	stringArr = dict.FilterRussian(stringArr)
+	stringArr = dict.FilterRussianAndMapToLower(stringArr)
 	if len(stringArr) == 0 {
 		fmt.Println("Словарь пустой либо все строки не подходят для игры")
 		os.Exit(1)

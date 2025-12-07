@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func FilterRussian(words []string) []string {
+func FilterRussianAndMapToLower(words []string) []string {
 	var filteredWords []string
 	for _, word := range words {
 		runes := []rune(strings.TrimSpace(word))
