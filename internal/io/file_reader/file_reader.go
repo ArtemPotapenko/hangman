@@ -44,6 +44,7 @@ func (fr *FileReader) ReadLine() (string, error) {
 	}
 	return "", io.EOF
 }
+
 func (fr *FileReader) ReadAll() ([]string, error) {
 	var lines []string
 	for {
